@@ -1,0 +1,13 @@
+FLEX SOCIAL — VERSION 2 : ÉCRANS D'INSCRIPTION ET DE CONNEXION
+
+Cette version ajoute les écrans d'inscription par e-mail ou téléphone et de connexion.
+IMPORTANT : ce sont des écrans de préparation. Aucun compte réel n'est créé et aucun mot de passe n'est sauvegardé. Ne saisissez pas votre vrai mot de passe dans cette démonstration.
+
+Pour mettre à jour le site :
+1. Décompressez ce ZIP.
+2. Dans Netlify, ouvrez le site existant.
+3. Allez dans Deploys.
+4. Déposez le dossier décompressé (ou son contenu selon l'interface) dans la zone de déploiement manuel.
+5. Attendez la fin du déploiement, puis rechargez le lien du site.
+
+Étape technique suivante : connecter un service d'authentification et une base de données. Pour le téléphone, la vérification par SMS peut nécessiter un fournisseur et des frais.

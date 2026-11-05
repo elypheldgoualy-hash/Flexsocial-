@@ -1,0 +1,17 @@
+FLEX SOCIAL — VERSION DE DÉPART
+
+Contenu :
+- index.html : application de démonstration
+- manifest.json : paramètres d'installation PWA
+- sw.js : cache hors ligne de base
+
+IMPORTANT :
+Cette version est une maquette interactive locale. Les publications, likes et commentaires sont stockés dans le navigateur du téléphone. Il n'y a pas encore de comptes réels, de synchronisation entre utilisateurs ni de messagerie en ligne.
+
+Pour tester :
+1. Décompresse le ZIP.
+2. Héberge les fichiers sur un service web statique HTTPS (par exemple GitHub Pages ou Netlify).
+3. Ouvre l'adresse HTTPS dans Chrome Android.
+4. Menu ⋮ > Ajouter à l'écran d'accueil / Installer.
+
+La prochaine étape sera de publier ces fichiers en ligne et de construire le système sécurisé de comptes et de base de données.
