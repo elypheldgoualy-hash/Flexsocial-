@@ -2,7 +2,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 const SUPABASE_URL = 'https://jtvkjxzidtqaxvgchfxw.supabase.co';
 
-const SUPABASE_ANON_KEY = 'TA_CLE_PUBLISHABLE_COMPLETE';
+const SUPABASE_ANON_KEY = 'sb_publishable_RYv36hh9sqQpLl_VN1J26w_G5pkL2jN';
 
 export const supabase = createClient(
   SUPABASE_URL,
