@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -6,83 +7,425 @@
 <meta name="theme-color" content="#1769e0">
 <title>FlexSocial</title>
 <link rel="manifest" href="manifest.json">
+
 <style>
-:root{--blue:#1769e0;--ink:#14233b;--muted:#718096;--bg:#f3f6fb}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)}
-header{background:linear-gradient(120deg,#1256c4,#3294ff);color:white;padding:18px 16px}
-.brand{font-size:25px;font-weight:850}.tag{font-size:12px;opacity:.9}
-main{max-width:620px;margin:auto;padding:16px 13px 35px}
-.card{background:#fff;border-radius:18px;padding:17px;margin:0 0 14px;box-shadow:0 4px 18px #19345b0c}
-h1{font-size:20px;margin:0 0 6px}h2{font-size:17px;margin:0 0 12px}
-.small{font-size:12px;color:var(--muted);line-height:1.5}
-.tabs{display:flex;gap:8px;margin:14px 0}.tabs button{flex:1}
-button{border:0;border-radius:12px;background:var(--blue);color:white;padding:12px 15px;font-weight:700;font-size:14px;cursor:pointer}
-button.alt{background:#eaf1ff;color:#1456b7}
-button:disabled{opacity:.5}
-label{display:block;font-size:13px;font-weight:650;margin:12px 0 6px}
-input,textarea{font:inherit;width:100%;border:1px solid #dbe3ef;border-radius:12px;padding:12px;background:#fbfcff;outline:none}
-input:focus,textarea:focus{border-color:#1769e0}
-.full{width:100%;margin-top:14px}
-.hidden{display:none!important}
-.notice{background:#fff8e7;color:#75551a;border:1px solid #f5e3b7;padding:11px;border-radius:12px;font-size:12px;line-height:1.5;margin-top:12px}
-.success{background:#eaf8ef;color:#21643b;border:1px solid #ccebd5;padding:11px;border-radius:12px;font-size:13px;margin-top:12px}
-.post{background:white;border-radius:17px;padding:15px;margin:12px 0;box-shadow:0 4px 18px #19345b0c}
-.person{display:flex;align-items:center;gap:10px;margin-bottom:8px}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#e3efff;color:#1359bd;font-weight:800}
-.post p{white-space:pre-wrap;line-height:1.5}.post img{max-width:100%;border-radius:12px}.actions{display:flex;gap:8px;border-top:1px solid #edf1f7;padding-top:10px}.actions button{flex:1}
-.commentbox{display:flex;gap:7px;margin-top:10px}.commentbox input{min-width:0}.comments{font-size:13px;color:#40516b;margin-top:8px}
+:root {
+  --blue:#1769e0;
+  --ink:#14233b;
+  --muted:#718096;
+  --bg:#f3f6fb;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+header {
+  background:linear-gradient(120deg,#1256c4,#3294ff);
+  color:white;
+  padding:20px 16px;
+}
+.brand {font-size:26px;font-weight:850}
+.tag {font-size:12px;opacity:.9}
+main {
+  max-width:620px;
+  margin:auto;
+  padding:16px 13px 35px;
+}
+.card {
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:15px;
+  box-shadow:0 4px 18px #19345b0c;
+}
+h1 {font-size:21px;margin:0 0 7px}
+h2 {font-size:18px;margin:0 0 12px}
+.small {
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.tabs {display:flex;gap:8px;margin:15px 0}
+button {
+  border:0;
+  border-radius:12px;
+  background:var(--blue);
+  color:white;
+  padding:13px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+.tabs button {flex:1}
+button.alt {background:#eaf1ff;color:#1456b7}
+button:disabled {opacity:.5}
+label {
+  display:block;
+  font-size:13px;
+  font-weight:650;
+  margin:13px 0 6px;
+}
+input {
+  width:100%;
+  padding:13px;
+  border:1px solid #dbe3ef;
+  border-radius:12px;
+  background:#fbfcff;
+  font:inherit;
+}
+.full {width:100%;margin-top:16px}
+.hidden {display:none!important}
+.notice,.success {
+  padding:12px;
+  border-radius:12px;
+  margin-top:13px;
+  font-size:13px;
+  line-height:1.5;
+}
+.notice {background:#fff8e7;color:#75551a}
+.success {background:#eaf8ef;color:#21643b}
+.avatar {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#e3efff;
+  color:#1359bd;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  font-weight:800;
+  margin-bottom:12px;
+}
 </style>
 </head>
+
 <body>
-<header><div class="brand">✦ FlexSocial</div><div class="tag">Partage tes idées. Reste connecté.</div></header>
+
+<header>
+  <div class="brand">✦ FlexSocial</div>
+  <div class="tag">Partage tes idées. Reste connecté.</div>
+</header>
+
 <main>
+
 <section class="card" id="auth">
+
 <h1>Bienvenue sur FlexSocial</h1>
-<div class="small">Crée ton compte ou connecte-toi pour rejoindre la communauté.</div>
+<div class="small">
+Crée ton compte ou connecte-toi pour rejoindre la communauté.
+</div>
+
 <div class="tabs">
 <button id="showSignup">Créer un compte</button>
 <button class="alt" id="showLogin">Connexion</button>
 </div>
+
 <div id="signup">
+
 <h2>Inscription</h2>
-<label for="fullName">Nom à afficher</label><input id="fullName" autocomplete="name" placeholder="Ex. Awa K.">
-<label>Choisir une méthode d'inscription</label>
-<div class="tabs">
-<button id="emailMode">E-mail</button><button class="alt" id="phoneMode">Téléphone</button>
+
+<label for="fullName">Nom à afficher</label>
+<input id="fullName" autocomplete="name" placeholder="Ex. Awa K.">
+
+<label for="email">Adresse e-mail</label>
+<input id="email" type="email" autocomplete="email" placeholder="exemple@email.com">
+
+<label for="password">Mot de passe</label>
+<input id="password" type="password" autocomplete="new-password" placeholder="Au moins 8 caractères">
+
+<label for="confirm">Confirmer le mot de passe</label>
+<input id="confirm" type="password" autocomplete="new-password" placeholder="Répète le mot de passe">
+
+<button class="full" id="signupSubmit">Créer mon compte</button>
+
 </div>
-<div id="emailFields"><label for="email">Adresse e-mail</label><input id="email" type="email" autocomplete="email" placeholder="exemple@email.com"></div>
-<div id="phoneFields" class="hidden"><label for="phone">Numéro de téléphone</label><input id="phone" type="tel" autocomplete="tel" placeholder="+225 07 00 00 00 00"></div>
-<label for="password">Mot de passe</label><input id="password" type="password" autocomplete="new-password" placeholder="Au moins 8 caractères">
-<label for="confirm">Confirmer le mot de passe</label><input id="confirm" type="password" autocomplete="new-password" placeholder="Répète le mot de passe">
-<button class="full" id="signupSubmit">Continuer l'inscription</button>
-</div>
+
 <div id="login" class="hidden">
+
 <h2>Connexion</h2>
-<label for="loginId">Adresse e-mail ou numéro de téléphone</label><input id="loginId" autocomplete="username" placeholder="E-mail ou +225...">
-<label for="loginPassword">Mot de passe</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Ton mot de passe">
+
+<label for="loginEmail">Adresse e-mail</label>
+<input id="loginEmail" type="email" autocomplete="username" placeholder="exemple@email.com">
+
+<label for="loginPassword">Mot de passe</label>
+<input id="loginPassword" type="password" autocomplete="current-password" placeholder="Ton mot de passe">
+
 <button class="full" id="loginSubmit">Se connecter</button>
+
 </div>
+
 <div id="message" aria-live="polite"></div>
-<div class="notice"><b>Version de préparation :</b> les écrans d'inscription et de connexion sont prêts, mais aucun compte réel n'est encore créé. La connexion sécurisée sera activée après le branchement d'un service d'authentification. Ne saisis pas ton vrai mot de passe sur cette version de démonstration.</div>
+
 </section>
+
+<section class="card hidden" id="home">
+
+<div class="avatar" id="avatar">F</div>
+
+<h1 id="welcome">Bienvenue sur FlexSocial !</h1>
+
+<p class="small">
+Ton compte est connecté. Bienvenue dans ton espace personnel.
+</p>
+
+<div class="success">
+Authentification Supabase active.
+</div>
+
+<h2 style="margin-top:20px">Ton espace FlexSocial</h2>
+
+<p class="small">
+Les publications, commentaires, mentions J'aime et abonnements seront ajoutés progressivement.
+</p>
+
+<button class="full" id="logout">Se déconnecter</button>
+
+</section>
+
 <section class="card">
 <h2>À propos de FlexSocial</h2>
-<div class="small">Un espace pour partager tes idées, tes photos et échanger avec tes amis. Les prochaines étapes ajouteront les comptes réels, les profils et les publications partagées entre membres.</div>
+<div class="small">
+Un espace pour partager tes idées, tes photos et échanger avec tes amis. Construisons ensemble une communauté connectée.
+</div>
 </section>
+
 </main>
-<script>
-const $=id=>document.getElementById(id);
-let mode='email';
-function show(which){$('signup').classList.toggle('hidden',which!=='signup');$('login').classList.toggle('hidden',which!=='login');$('showSignup').className=which==='signup'?'':'alt';$('showLogin').className=which==='login'?'':'alt';$('message').innerHTML=''}
-$('showSignup').onclick=()=>show('signup');$('showLogin').onclick=()=>show('login');
-function setMode(m){mode=m;$('emailFields').classList.toggle('hidden',m!=='email');$('phoneFields').classList.toggle('hidden',m!=='phone');$('emailMode').className=m==='email'?'':'alt';$('phoneMode').className=m==='phone'?'':'alt'}
-$('emailMode').onclick=()=>setMode('email');$('phoneMode').onclick=()=>setMode('phone');
-$('signupSubmit').onclick=()=>{
- const name=$('fullName').value.trim(),identity=mode==='email'?$ ('email').value.trim():$('phone').value.trim(),p=$('password').value,c=$('confirm').value;
- if(!name||!identity||!p||!c){$('message').innerHTML='<div class="notice">Remplis tous les champs pour continuer.</div>';return}
- if(p.length<8){$('message').innerHTML='<div class="notice">Le mot de passe doit contenir au moins 8 caractères.</div>';return}
- if(p!==c){$('message').innerHTML='<div class="notice">Les deux mots de passe ne correspondent pas.</div>';return}
- $('message').innerHTML='<div class="success">Les champs sont prêts. L'inscription réelle sera activée lorsque nous connecterons le service sécurisé. Aucun mot de passe n’a été enregistré.</div>';
+
+<script type="module">
+
+import { supabase } from './Supabase.js';
+
+const $ = id => document.getElementById(id);
+
+function message(text,type='notice') {
+  const box = document.createElement('div');
+  box.className = type;
+  box.textContent = text;
+  $('message').replaceChildren(box);
+}
+
+function show(which) {
+  $('signup').classList.toggle('hidden',which !== 'signup');
+  $('login').classList.toggle('hidden',which !== 'login');
+
+  $('showSignup').className = which === 'signup' ? '' : 'alt';
+  $('showLogin').className = which === 'login' ? '' : 'alt';
+
+  $('message').replaceChildren();
+}
+
+$('showSignup').onclick = () => show('signup');
+$('showLogin').onclick = () => show('login');
+
+function showHome(user) {
+  $('auth').classList.add('hidden');
+  $('home').classList.remove('hidden');
+
+  const name =
+    user.user_metadata?.full_name ||
+    user.email ||
+    'Membre FlexSocial';
+
+  $('welcome').textContent = 'Bienvenue, ' + name + ' !';
+  $('avatar').textContent = name.charAt(0).toUpperCase();
+}
+
+function showAuth() {
+  $('home').classList.add('hidden');
+  $('auth').classList.remove('hidden');
+}
+
+// Création ou mise à jour du profil
+
+async function ensureProfile(user) {
+
+  const fullName =
+    user.user_metadata?.full_name ||
+    user.email?.split('@')[0] ||
+    'Membre FlexSocial';
+
+  const slug = fullName
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-|-$/g,'') || 'membre';
+
+  const username = slug + '-' + user.id.slice(0,8);
+
+  const {error} = await supabase
+    .from('profiles')
+    .upsert({
+      id:user.id,
+      username:username,
+      full_name:fullName
+    },{onConflict:'id'});
+
+  if (error) {
+    throw error;
+  }
+}
+
+// Vérification de la session
+
+async function checkSession() {
+
+  try {
+    const {data,error} = await supabase.auth.getSession();
+
+    if (error) throw error;
+
+    if (data.session) {
+      showHome(data.session.user);
+      await ensureProfile(data.session.user);
+    } else {
+      showAuth();
+    }
+
+  } catch(error) {
+    showAuth();
+    message('Erreur de connexion : ' + error.message);
+  }
+}
+
+// INSCRIPTION
+
+$('signupSubmit').onclick = async () => {
+
+  const name = $('fullName').value.trim();
+  const email = $('email').value.trim();
+  const password = $('password').value;
+  const confirm = $('confirm').value;
+
+  if (!name || !email || !password || !confirm) {
+    message('Remplis tous les champs.');
+    return;
+  }
+
+  if (password.length < 8) {
+    message('Le mot de passe doit contenir au moins 8 caractères.');
+    return;
+  }
+
+  if (password !== confirm) {
+    message('Les mots de passe ne correspondent pas.');
+    return;
+  }
+
+  const button = $('signupSubmit');
+  button.disabled = true;
+  button.textContent = 'Création du compte...';
+
+  try {
+
+    const {data,error} = await supabase.auth.signUp({
+      email,
+      password,
+      options:{
+        data:{full_name:name},
+        emailRedirectTo:window.location.origin + window.location.pathname
+      }
+    });
+
+    if (error) throw error;
+
+    if (data.session && data.user) {
+      await ensureProfile(data.user);
+      showHome(data.user);
+      return;
+    }
+
+    message(
+      'Compte créé ! Consulte ta boîte e-mail pour confirmer ton adresse. Tu pourras ensuite te connecter.',
+      'success'
+    );
+
+  } catch(error) {
+    message('Inscription impossible : ' + error.message);
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Créer mon compte';
+  }
 };
-$('loginSubmit').onclick=()=>{$('message').innerHTML='<div class="notice">La connexion réelle sera disponible après l’activation du service de comptes. Cette démonstration ne vérifie pas les mots de passe.</div>'};
+
+// CONNEXION
+
+$('loginSubmit').onclick = async () => {
+
+  const email = $('loginEmail').value.trim();
+  const password = $('loginPassword').value;
+
+  if (!email || !password) {
+    message('Entre ton adresse e-mail et ton mot de passe.');
+    return;
+  }
+
+  const button = $('loginSubmit');
+  button.disabled = true;
+  button.textContent = 'Connexion...';
+
+  try {
+
+    const {data,error} = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) throw error;
+
+    await ensureProfile(data.user);
+    showHome(data.user);
+
+  } catch(error) {
+    message('Connexion impossible : ' + error.message);
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Se connecter';
+  }
+};
+
+// DÉCONNEXION
+
+$('logout').onclick = async () => {
+
+  const button = $('logout');
+  button.disabled = true;
+
+  try {
+
+    const {error} = await supabase.auth.signOut();
+
+    if (error) throw error;
+
+    showAuth();
+    show('login');
+
+  } catch(error) {
+    message('Erreur : ' + error.message);
+  } finally {
+    button.disabled = false;
+  }
+};
+
+// Suivi automatique de la session
+
+supabase.auth.onAuthStateChange((event,session) => {
+
+  if (session?.user) {
+    showHome(session.user);
+  } else if (event === 'SIGNED_OUT') {
+    showAuth();
+  }
+
+});
+
+checkSession();
+
 </script>
-</body></html>
+
+</body>
+ </html>
+ 
