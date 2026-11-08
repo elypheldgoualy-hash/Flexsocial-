@@ -1,0 +1,9 @@
+{
+  "name": "FlexSocial",
+  "short_name": "FlexSocial",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f3f6fb",
+  "theme_color": "#1769e0",
+  "description": "Partage tes idées. Reste connecté."
+}
