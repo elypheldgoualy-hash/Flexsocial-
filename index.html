@@ -1,431 +1,206 @@
-
 <!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#1769e0">
+<meta name="theme-color" content="#100d19">
 <title>FlexSocial</title>
-<link rel="manifest" href="manifest.json">
-
 <style>
-:root {
-  --blue:#1769e0;
-  --ink:#14233b;
-  --muted:#718096;
-  --bg:#f3f6fb;
-}
-* {box-sizing:border-box}
-body {
-  margin:0;
-  font-family:system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-}
-header {
-  background:linear-gradient(120deg,#1256c4,#3294ff);
-  color:white;
-  padding:20px 16px;
-}
-.brand {font-size:26px;font-weight:850}
-.tag {font-size:12px;opacity:.9}
-main {
-  max-width:620px;
-  margin:auto;
-  padding:16px 13px 35px;
-}
-.card {
-  background:white;
-  border-radius:18px;
-  padding:18px;
-  margin-bottom:15px;
-  box-shadow:0 4px 18px #19345b0c;
-}
-h1 {font-size:21px;margin:0 0 7px}
-h2 {font-size:18px;margin:0 0 12px}
-.small {
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.5;
-}
-.tabs {display:flex;gap:8px;margin:15px 0}
-button {
-  border:0;
-  border-radius:12px;
-  background:var(--blue);
-  color:white;
-  padding:13px;
-  font-size:14px;
-  font-weight:700;
-  cursor:pointer;
-}
-.tabs button {flex:1}
-button.alt {background:#eaf1ff;color:#1456b7}
-button:disabled {opacity:.5}
-label {
-  display:block;
-  font-size:13px;
-  font-weight:650;
-  margin:13px 0 6px;
-}
-input {
-  width:100%;
-  padding:13px;
-  border:1px solid #dbe3ef;
-  border-radius:12px;
-  background:#fbfcff;
-  font:inherit;
-}
-.full {width:100%;margin-top:16px}
-.hidden {display:none!important}
-.notice,.success {
-  padding:12px;
-  border-radius:12px;
-  margin-top:13px;
-  font-size:13px;
-  line-height:1.5;
-}
-.notice {background:#fff8e7;color:#75551a}
-.success {background:#eaf8ef;color:#21643b}
-.avatar {
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:#e3efff;
-  color:#1359bd;
-  display:grid;
-  place-items:center;
-  font-size:24px;
-  font-weight:800;
-  margin-bottom:12px;
-}
+:root{--bg:#100d19;--panel:#1b1727;--panel2:#241e34;--purple:#9b6cff;--cyan:#43e5d1;--white:#f8f6ff;--muted:#aaa3bb;--line:#342c46;--danger:#ff7894}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#30204b 0,transparent 32%),var(--bg);color:var(--white);font:15px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0}
+.wrap{max-width:760px;margin:auto;padding:18px 14px 90px}
+header{display:flex;align-items:center;justify-content:space-between;padding:10px 2px 20px}
+.brand{font-weight:850;font-size:24px;letter-spacing:-1px}.brand span{color:var(--purple)}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:500;letter-spacing:.3px}
+.pill{border:1px solid var(--line);background:#ffffff08;color:var(--muted);padding:7px 11px;border-radius:30px;font-size:12px}
+.panel{background:linear-gradient(145deg,#211a31,#171321);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 14px 40px #0003}
+h1{font-size:26px;line-height:1.15;margin:0 0 8px}h2{font-size:18px;margin:0 0 14px}.muted{color:var(--muted)}.small{font-size:12px}
+input,textarea{width:100%;background:#100d19;color:var(--white);border:1px solid var(--line);border-radius:12px;padding:13px;margin:6px 0 12px;outline:none}
+input:focus,textarea:focus{border-color:var(--purple)}textarea{resize:vertical;min-height:90px}
+label{font-size:12px;color:var(--muted)}
+.btn{background:linear-gradient(100deg,var(--purple),#7450df);color:white;padding:12px 17px;border-radius:12px;font-weight:700}
+.btn.alt{background:#ffffff0c;border:1px solid var(--line);color:var(--white)}.btn:disabled{opacity:.55;cursor:wait}
+.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.row>*{flex:1}
+.hidden{display:none!important}.auth{max-width:460px;margin:35px auto}.auth .brand{margin-bottom:24px}.auth .switch{display:flex;gap:8px;margin:18px 0}.switch button{flex:1}
+.notice{padding:11px 13px;border-radius:12px;background:#9b6cff18;color:#d9c8ff;font-size:13px;margin:12px 0}
+.feedhead{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 12px}
+.post{margin:12px 0;padding:17px;background:var(--panel);border:1px solid var(--line);border-radius:17px}
+.posttop{display:flex;align-items:center;gap:10px;margin-bottom:12px}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#120d1d;font-weight:900}
+.author{font-weight:700}.time{font-size:11px;color:var(--muted)}.postcontent{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5}.postactions{display:flex;gap:9px;margin-top:14px}
+.empty{text-align:center;padding:28px 12px;color:var(--muted)}.status{font-size:12px;color:var(--cyan);min-height:18px;margin:8px 0}
+footer{text-align:center;color:#777087;font-size:11px;padding:24px 0}
+@media(min-width:600px){.wrap{padding-top:24px}.auth{margin-top:55px}}
 </style>
 </head>
-
 <body>
+<div class="wrap">
+<header><div class="brand">✦ Flex<span>Social</span><small>Partage tes idées. Reste connecté.</small></div><div class="pill" id="connection">Hors connexion</div></header>
 
-<header>
-  <div class="brand">✦ FlexSocial</div>
-  <div class="tag">Partage tes idées. Reste connecté.</div>
-</header>
-
-<main>
-
-<section class="card" id="auth">
-
-<h1>Bienvenue sur FlexSocial</h1>
-<div class="small">
-Crée ton compte ou connecte-toi pour rejoindre la communauté.
-</div>
-
-<div class="tabs">
-<button id="showSignup">Créer un compte</button>
-<button class="alt" id="showLogin">Connexion</button>
-</div>
-
-<div id="signup">
-
-<h2>Inscription</h2>
-
-<label for="fullName">Nom à afficher</label>
-<input id="fullName" autocomplete="name" placeholder="Ex. Awa K.">
-
-<label for="email">Adresse e-mail</label>
-<input id="email" type="email" autocomplete="email" placeholder="exemple@email.com">
-
-<label for="password">Mot de passe</label>
-<input id="password" type="password" autocomplete="new-password" placeholder="Au moins 8 caractères">
-
-<label for="confirm">Confirmer le mot de passe</label>
-<input id="confirm" type="password" autocomplete="new-password" placeholder="Répète le mot de passe">
-
-<button class="full" id="signupSubmit">Créer mon compte</button>
-
-</div>
-
-<div id="login" class="hidden">
-
-<h2>Connexion</h2>
-
-<label for="loginEmail">Adresse e-mail</label>
-<input id="loginEmail" type="email" autocomplete="username" placeholder="exemple@email.com">
-
-<label for="loginPassword">Mot de passe</label>
-<input id="loginPassword" type="password" autocomplete="current-password" placeholder="Ton mot de passe">
-
-<button class="full" id="loginSubmit">Se connecter</button>
-
-</div>
-
-<div id="message" aria-live="polite"></div>
-
+<section class="auth panel" id="authView">
+  <h1>Bienvenue sur FlexSocial</h1>
+  <p class="muted">Un espace pour partager, découvrir et échanger.</p>
+  <div class="switch">
+    <button class="btn" id="showLogin">Connexion</button>
+    <button class="btn alt" id="showSignup">Inscription</button>
+  </div>
+  <form id="authForm">
+    <div id="nameField" class="hidden"><label for="displayName">Nom affiché</label><input id="displayName" maxlength="40" autocomplete="name" placeholder="Ton nom"></div>
+    <label for="email">Adresse e-mail</label><input id="email" type="email" required autocomplete="email" placeholder="exemple@email.com">
+    <label for="password">Mot de passe</label><input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="6 caractères minimum">
+    <button class="btn" id="authSubmit" type="submit" style="width:100%">Se connecter</button>
+  </form>
+  <div class="status" id="authStatus" role="status"></div>
+  <div class="notice">Utilise une adresse e-mail à laquelle tu as accès. Ne partage jamais ton mot de passe ni tes clés privées.</div>
 </section>
 
-<section class="card hidden" id="home">
-
-<div class="avatar" id="avatar">F</div>
-
-<h1 id="welcome">Bienvenue sur FlexSocial !</h1>
-
-<p class="small">
-Ton compte est connecté. Bienvenue dans ton espace personnel.
-</p>
-
-<div class="success">
-Authentification Supabase active.
-</div>
-
-<h2 style="margin-top:20px">Ton espace FlexSocial</h2>
-
-<p class="small">
-Les publications, commentaires, mentions J'aime et abonnements seront ajoutés progressivement.
-</p>
-
-<button class="full" id="logout">Se déconnecter</button>
-
+<section id="appView" class="hidden">
+  <div class="panel">
+    <div class="row" style="justify-content:space-between">
+      <div><div class="muted small">TON ESPACE</div><h1 id="hello">Bienvenue !</h1></div>
+      <button class="btn alt" id="logout">Déconnexion</button>
+    </div>
+    <p class="muted small">Exprime-toi et partage une idée avec la communauté.</p>
+  </div>
+  <div class="feedhead"><h2>Créer une publication</h2><span class="pill">✦ Communauté</span></div>
+  <section class="panel">
+    <form id="postForm">
+      <textarea id="postText" maxlength="2000" placeholder="Quoi de neuf ? Partage tes idées..." required></textarea>
+      <div class="row"><span class="muted small" id="charCount">0 / 2000</span><button class="btn" id="publish" type="submit">Publier ✦</button></div>
+    </form>
+    <div class="status" id="postStatus" role="status"></div>
+  </section>
+  <div class="feedhead"><h2>Fil d'actualité</h2><button class="btn alt" id="refresh">Actualiser</button></div>
+  <div id="feed"><div class="empty">Chargement des publications…</div></div>
 </section>
-
-<section class="card">
-<h2>À propos de FlexSocial</h2>
-<div class="small">
-Un espace pour partager tes idées, tes photos et échanger avec tes amis. Construisons ensemble une communauté connectée.
+<footer>FlexSocial · Une nouvelle façon de rester connecté</footer>
 </div>
-</section>
-
-</main>
 
 <script type="module">
-
 import { supabase } from './Supabase.js';
 
 const $ = id => document.getElementById(id);
+let mode = 'login';
+let currentUser = null;
 
-function message(text,type='notice') {
-  const box = document.createElement('div');
-  box.className = type;
-  box.textContent = text;
-  $('message').replaceChildren(box);
+function setStatus(id, message, error=false) {
+  const el = $(id); el.textContent = message;
+  el.style.color = error ? 'var(--danger)' : 'var(--cyan)';
 }
-
-function show(which) {
-  $('signup').classList.toggle('hidden',which !== 'signup');
-  $('login').classList.toggle('hidden',which !== 'login');
-
-  $('showSignup').className = which === 'signup' ? '' : 'alt';
-  $('showLogin').className = which === 'login' ? '' : 'alt';
-
-  $('message').replaceChildren();
+function setMode(next) {
+  mode = next;
+  $('nameField').classList.toggle('hidden', mode !== 'signup');
+  $('authSubmit').textContent = mode === 'signup' ? 'Créer mon compte' : 'Se connecter';
+  $('showLogin').className = mode === 'login' ? 'btn' : 'btn alt';
+  $('showSignup').className = mode === 'signup' ? 'btn' : 'btn alt';
+  $('authStatus').textContent = '';
 }
+$('showLogin').addEventListener('click', () => setMode('login'));
+$('showSignup').addEventListener('click', () => setMode('signup'));
 
-$('showSignup').onclick = () => show('signup');
-$('showLogin').onclick = () => show('login');
-
-function showHome(user) {
-  $('auth').classList.add('hidden');
-  $('home').classList.remove('hidden');
-
-  const name =
-    user.user_metadata?.full_name ||
-    user.email ||
-    'Membre FlexSocial';
-
-  $('welcome').textContent = 'Bienvenue, ' + name + ' !';
-  $('avatar').textContent = name.charAt(0).toUpperCase();
+function showApp(user) {
+  currentUser = user;
+  $('authView').classList.add('hidden');
+  $('appView').classList.remove('hidden');
+  $('connection').textContent = 'Connecté';
+  const display = user.user_metadata?.display_name || user.email?.split('@')[0] || 'membre';
+  $('hello').textContent = 'Bonjour, ' + display + ' 👋';
+  loadPosts();
 }
-
 function showAuth() {
-  $('home').classList.add('hidden');
-  $('auth').classList.remove('hidden');
+  currentUser = null;
+  $('appView').classList.add('hidden');
+  $('authView').classList.remove('hidden');
+  $('connection').textContent = 'Non connecté';
 }
 
-// Création ou mise à jour du profil
-
-async function ensureProfile(user) {
-
-  const fullName =
-    user.user_metadata?.full_name ||
-    user.email?.split('@')[0] ||
-    'Membre FlexSocial';
-
-  const slug = fullName
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g,'')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g,'-')
-    .replace(/^-|-$/g,'') || 'membre';
-
-  const username = slug + '-' + user.id.slice(0,8);
-
-  const {error} = await supabase
-    .from('profiles')
-    .upsert({
-      id:user.id,
-      username:username,
-      full_name:fullName
-    },{onConflict:'id'});
-
-  if (error) {
-    throw error;
-  }
-}
-
-// Vérification de la session
-
-async function checkSession() {
-
-  try {
-    const {data,error} = await supabase.auth.getSession();
-
-    if (error) throw error;
-
-    if (data.session) {
-      showHome(data.session.user);
-      await ensureProfile(data.session.user);
-    } else {
-      showAuth();
-    }
-
-  } catch(error) {
-    showAuth();
-    message('Erreur de connexion : ' + error.message);
-  }
-}
-
-// INSCRIPTION
-
-$('signupSubmit').onclick = async () => {
-
-  const name = $('fullName').value.trim();
+$('authForm').addEventListener('submit', async event => {
+  event.preventDefault();
   const email = $('email').value.trim();
   const password = $('password').value;
-  const confirm = $('confirm').value;
-
-  if (!name || !email || !password || !confirm) {
-    message('Remplis tous les champs.');
-    return;
-  }
-
-  if (password.length < 8) {
-    message('Le mot de passe doit contenir au moins 8 caractères.');
-    return;
-  }
-
-  if (password !== confirm) {
-    message('Les mots de passe ne correspondent pas.');
-    return;
-  }
-
-  const button = $('signupSubmit');
-  button.disabled = true;
-  button.textContent = 'Création du compte...';
-
+  const submit = $('authSubmit');
+  submit.disabled = true;
+  setStatus('authStatus', mode === 'signup' ? 'Création du compte…' : 'Connexion…');
   try {
-
-    const {data,error} = await supabase.auth.signUp({
-      email,
-      password,
-      options:{
-        data:{full_name:name},
-        emailRedirectTo:window.location.origin + window.location.pathname
-      }
-    });
-
-    if (error) throw error;
-
-    if (data.session && data.user) {
-      await ensureProfile(data.user);
-      showHome(data.user);
-      return;
+    if (mode === 'signup') {
+      const displayName = $('displayName').value.trim();
+      if (!displayName) throw new Error('Entre le nom qui sera affiché sur ton profil.');
+      const { data, error } = await supabase.auth.signUp({
+        email, password, options: { data: { display_name: displayName } }
+      });
+      if (error) throw error;
+      if (data.session) showApp(data.user);
+      else setStatus('authStatus', 'Compte créé. Vérifie ta boîte e-mail pour confirmer ton adresse.');
+    } else {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      showApp(data.user);
     }
-
-    message(
-      'Compte créé ! Consulte ta boîte e-mail pour confirmer ton adresse. Tu pourras ensuite te connecter.',
-      'success'
-    );
-
-  } catch(error) {
-    message('Inscription impossible : ' + error.message);
-  } finally {
-    button.disabled = false;
-    button.textContent = 'Créer mon compte';
-  }
-};
-
-// CONNEXION
-
-$('loginSubmit').onclick = async () => {
-
-  const email = $('loginEmail').value.trim();
-  const password = $('loginPassword').value;
-
-  if (!email || !password) {
-    message('Entre ton adresse e-mail et ton mot de passe.');
-    return;
-  }
-
-  const button = $('loginSubmit');
-  button.disabled = true;
-  button.textContent = 'Connexion...';
-
-  try {
-
-    const {data,error} = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    if (error) throw error;
-
-    await ensureProfile(data.user);
-    showHome(data.user);
-
-  } catch(error) {
-    message('Connexion impossible : ' + error.message);
-  } finally {
-    button.disabled = false;
-    button.textContent = 'Se connecter';
-  }
-};
-
-// DÉCONNEXION
-
-$('logout').onclick = async () => {
-
-  const button = $('logout');
-  button.disabled = true;
-
-  try {
-
-    const {error} = await supabase.auth.signOut();
-
-    if (error) throw error;
-
-    showAuth();
-    show('login');
-
-  } catch(error) {
-    message('Erreur : ' + error.message);
-  } finally {
-    button.disabled = false;
-  }
-};
-
-// Suivi automatique de la session
-
-supabase.auth.onAuthStateChange((event,session) => {
-
-  if (session?.user) {
-    showHome(session.user);
-  } else if (event === 'SIGNED_OUT') {
-    showAuth();
-  }
-
+  } catch (error) {
+    setStatus('authStatus', error.message || 'Une erreur est survenue.', true);
+  } finally { submit.disabled = false; }
 });
 
-checkSession();
+async function loadPosts() {
+  $('feed').innerHTML = '<div class="empty">Chargement…</div>';
+  const { data, error } = await supabase.from('posts')
+    .select('id,user_id,content,created_at')
+    .order('created_at', { ascending: false }).limit(30);
+  if (error) {
+    $('feed').innerHTML = '<div class="empty">Impossible de charger les publications. Vérifie les règles d’accès de la table posts dans Supabase.</div>';
+    return;
+  }
+  if (!data?.length) {
+    $('feed').innerHTML = '<div class="empty">Aucune publication pour le moment.<br>Sois le premier à partager une idée !</div>';
+    return;
+  }
+  $('feed').replaceChildren(...data.map(post => {
+    const article = document.createElement('article'); article.className = 'post';
+    const top = document.createElement('div'); top.className = 'posttop';
+    const avatar = document.createElement('div'); avatar.className = 'avatar'; avatar.textContent = 'F';
+    const info = document.createElement('div');
+    const author = document.createElement('div'); author.className = 'author'; author.textContent = post.user_id === currentUser.id ? 'Toi' : 'Membre FlexSocial';
+    const time = document.createElement('div'); time.className = 'time'; time.textContent = post.created_at ? new Date(post.created_at).toLocaleString('fr-FR') : '';
+    info.append(author,time); top.append(avatar,info);
+    const content = document.createElement('div'); content.className = 'postcontent'; content.textContent = post.content || '';
+    article.append(top,content); return article;
+  }));
+}
+$('postText').addEventListener('input', () => $('charCount').textContent = $('postText').value.length + ' / 2000');
+$('postForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  if (!currentUser) return;
+  const content = $('postText').value.trim();
+  if (!content) return;
+  $('publish').disabled = true;
+  setStatus('postStatus', 'Publication en cours…');
+  const { error } = await supabase.from('posts').insert({ user_id: currentUser.id, content });
+  $('publish').disabled = false;
+  if (error) { setStatus('postStatus', error.message, true); return; }
+  $('postText').value = ''; $('charCount').textContent = '0 / 2000';
+  setStatus('postStatus', 'Publication envoyée !');
+  await loadPosts();
+});
+$('refresh').addEventListener('click', loadPosts);
+$('logout').addEventListener('click', async () => {
+  const { error } = await supabase.auth.signOut();
+  if (error) setStatus('postStatus', error.message, true);
+  else showAuth();
+});
 
+try {
+  const { data, error } = await supabase.auth.getSession();
+  if (error) throw error;
+  if (data.session?.user) showApp(data.session.user);
+  else showAuth();
+  supabase.auth.onAuthStateChange((_event, session) => {
+    if (session?.user) showApp(session.user);
+    else showAuth();
+  });
+} catch (error) {
+  showAuth();
+  setStatus('authStatus', 'Connexion à Supabase impossible : ' + (error.message || 'vérifie Supabase.js'), true);
+}
 </script>
-
 </body>
- </html>
- 
+      </html>
+                                                                                                                                                             
